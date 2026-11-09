@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // TODO 2: The password is stored exactly as typed. Turn it into a
         //         one-way hash with password_hash() and store the hash instead.
-        $stored = $password;
-
+        $stored = password_hash($password, PASSWORD_DEFAULT);
+        
         try {
             addUser($db, $username, $stored);
         } catch (PDOException $e) {
